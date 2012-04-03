@@ -1,0 +1,17 @@
+README
+------
+
+Usage: python popdist_gen_csv.py [OPTIONS] INPUTFILE OUTPUTFILE
+Merge fragemented popdist output tables into a single CVS file
+
+Options:
+ -s, --separator=SEP  field separator in output file (default is TAB)
+ -q, --quotes         put double quotes around field values (default is none)
+ -u, --unix           use UNIX line breaks (CR) (default)
+ -w, --windows        use Windows line breaks (CRLF)
+ -h, --help           print this message and exit
+
+When INPUTFILE or OUTPUTFILE are -, standard input or standard output are used
+respectively.
+
+For popdist see http://genetics.agrsci.dk/~bernt/popgen/
