@@ -2,7 +2,7 @@ README
 ------
 
 Usage: python popdist_gen_csv.py [OPTIONS] INPUTFILE OUTPUTFILE
-Merge fragemented popdist output tables into a single CVS file
+Merge fragemented popdist output tables into a single CVS file.
 
 Options:
  -s, --separator=SEP  field separator in output file (default is TAB)

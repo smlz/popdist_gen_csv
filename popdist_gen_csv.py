@@ -22,25 +22,22 @@ def merge_tables(input_text, nl='\n', sep='\t', quot=None):
 
 
 def usage(out=sys.stderr):
-    print >>out, "Usage: python "+sys.argv[0]+" [OPTIONS] INPUTFILE OUTPUTFILE"
-    print >>out, "Merge fragemented popdist output tables into a single CVS \
-file"
-    print >>out
-    print >>out, "Options:"
-    print >>out, " -s, --separator=SEP  field separator in output file \
-(default is TAB)"
-    print >>out, " -q, --quotes         put double quotes around field values \
-(default is none)"
-    print >>out, " -u, --unix           use UNIX line breaks (CR) (default)"
-    print >>out, " -w, --windows        use Windows line breaks (CRLF)"
-    print >>out, " -h, --help           print this message and exit"
-    print >>out
-    print >>out, "When INPUTFILE or OUTPUTFILE are -, standard input or \
-standard output are used"
-    print >>out, "respectively."
-    print >>out
-    print >>out, "For popdist see http://genetics.agrsci.dk/~bernt/popgen/"
+    text = """Usage: python %(progname)s [OPTIONS] INPUTFILE OUTPUTFILE
+Merge fragemented popdist output tables into a single CVS file.
 
+Options:
+ -s, --separator=SEP  field separator in output file (default is TAB)
+ -q, --quotes         put double quotes around field values (default is none)
+ -u, --unix           use UNIX line breaks (CR) (default)
+ -w, --windows        use Windows line breaks (CRLF)
+ -h, --help           print this message and exit
+
+When INPUTFILE or OUTPUTFILE are -, standard input or standard output are used
+respectively.
+
+For popdist see http://genetics.agrsci.dk/~bernt/popgen/
+"""
+    out.write(text % { 'progname': sys.argv[0] })
 
 def main(argv):
     try:
