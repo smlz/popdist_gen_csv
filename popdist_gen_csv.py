@@ -53,6 +53,7 @@ For popdist see http://genetics.agrsci.dk/~bernt/popgen/
 """
     out.write(text % { 'progname': sys.argv[0] })
 
+
 def main(argv):
     try:
         opts, args = getopt.getopt(argv, 'hs:quw', ['--help', '--separator',
