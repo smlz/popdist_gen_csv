@@ -87,5 +87,6 @@ def main(argv):
     dst.write(out_txt)
     dst.flush()
 
+
 if __name__ == '__main__':
     main(sys.argv[1:])
