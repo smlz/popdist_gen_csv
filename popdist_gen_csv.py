@@ -14,25 +14,26 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-import getopt, re, sys
+import getopt
+import re
+import sys
 
 
 def merge_tables(input_text, nl='\n', sep='\t', quot=None):
     table_title = re.search('\n(\w*)\W*\|.*\n-+\n', input_text).groups()[0]
     text_chunks = re.split('\n\w*\W*\|.*\n-+\n', input_text)[1:]
     line_chunks = map(lambda text: text.splitlines(), text_chunks)
-    col_titles  = map(lambda line: line.split('|')[0].strip(), line_chunks[0])
-    matrices    = map(lambda chunk: map(lambda line: line.split('|')[1].split(),
-                                        chunk), line_chunks)
-    matrix      = map(lambda line: reduce(lambda l, r: l+r, line), 
-                      zip(*matrices))
-    lines       = [ [ table_title ] + col_titles ] + \
-                  map(lambda (i, line): [ col_titles[i] ] + line, 
-                      enumerate(matrix))
+    col_titles = map(lambda line: line.split('|')[0].strip(), line_chunks[0])
+    matrices = map(lambda chunk: map(lambda line: line.split('|')[1].split(),
+                                     chunk), line_chunks)
+    matrix = map(lambda line: reduce(lambda l, r: l + r, line), zip(*matrices))
+    lines = [[table_title] + col_titles] + \
+        map(lambda (i, line): [col_titles[i]] + line, enumerate(matrix))
     if quot:
-        lines   = map(lambda line: map(lambda val: quot+val+quot, line), lines)
+        lines = map(lambda line: map(lambda val: quot + val + quot, line),
+                    lines)
     output_text = nl.join(map(lambda line: sep.join(line), lines))
-    return output_text
+    return output_text + nl
 
 
 def usage(out=sys.stderr):
@@ -51,7 +52,7 @@ respectively.
 
 For popdist see http://genetics.agrsci.dk/~bernt/popgen/
 """
-    out.write(text % { 'progname': sys.argv[0] })
+    out.write(text % {'progname': sys.argv[0]})
 
 
 def main(argv):
